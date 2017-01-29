@@ -20,7 +20,8 @@
 */
 
 //go:generate protoc --go_out=. timeslab.proto
-
+//go:generate msgp -tests -o timeslab_mspg.go --file timeslab.pb.go
+//go:generate easyjson timeslab.pb.go
 package timeslab
 
 import (

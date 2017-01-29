@@ -1,0 +1,37 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "y1SSuCpa5t8fVcmudEihy7Xwvd8=",
+			"path": "github.com/mailru/easyjson",
+			"revision": "edd3ef1dab48f1cc831d78c0602a79be7a7b1a5e",
+			"revisionTime": "2017-01-27T09:32:52Z"
+		},
+		{
+			"checksumSHA1": "urY45++NYCue4nh4k8OjUFnIGfU=",
+			"path": "github.com/mailru/easyjson/buffer",
+			"revision": "edd3ef1dab48f1cc831d78c0602a79be7a7b1a5e",
+			"revisionTime": "2017-01-27T09:32:52Z"
+		},
+		{
+			"checksumSHA1": "OYI6tvOnGD2mKKSRxc45Oz9gzs4=",
+			"path": "github.com/mailru/easyjson/gen",
+			"revision": "edd3ef1dab48f1cc831d78c0602a79be7a7b1a5e",
+			"revisionTime": "2017-01-27T09:32:52Z"
+		},
+		{
+			"checksumSHA1": "awmSd2XzrSAhUrGTsGxuZXpdf7s=",
+			"path": "github.com/mailru/easyjson/jlexer",
+			"revision": "edd3ef1dab48f1cc831d78c0602a79be7a7b1a5e",
+			"revisionTime": "2017-01-27T09:32:52Z"
+		},
+		{
+			"checksumSHA1": "Y87W4rlZJ+Dlsyax7u5SUy1RqF8=",
+			"path": "github.com/mailru/easyjson/jwriter",
+			"revision": "edd3ef1dab48f1cc831d78c0602a79be7a7b1a5e",
+			"revisionTime": "2017-01-27T09:32:52Z"
+		}
+	],
+	"rootPath": "wyndhblb/timeslab"
+}
