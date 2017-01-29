@@ -19,7 +19,7 @@
 
 */
 
-//go:generate protoc --proto_path=vendor/:. --gogofaster_out=. timeslab.proto
+//go:generate protoc --go_out=. timeslab.proto
 
 package timeslab
 

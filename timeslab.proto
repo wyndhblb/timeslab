@@ -3,18 +3,9 @@
 
 syntax = 'proto3';
 
-package schema.vepr;
+package github.com.wyndhblb.timeslab;
 
 option go_package = "timeslab";
-
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
-
-option (gogoproto.goproto_getters_all) = false;
-option (gogoproto.benchgen_all) = true;
-option (gogoproto.unmarshaler_all) = true;
-option (gogoproto.marshaler_all) = true;
-option (gogoproto.sizer_all) = true;
-option (gogoproto.populate_all) = true;
 
 
 // Resoluton min, min5, min10, min15, min20, min30 hour, day, week, month, month2, month3, month6, year, all
