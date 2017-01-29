@@ -3,21 +3,22 @@
 just gonna copy and paste the docs string really
 
 
-   define: a time slab is basically a string representation of resolutions on a time
-
-   a "year" is YYYY
-   a "every half year" is YYYYM6{month/6}
-   a "every quarter" is YYYYM3{month/3}
-   a "every bimonthly" is YYYYM2{month/2}
-   a "month" is YYYYMM
-   a "day" is YYYYMMDD
-   a "hour" is YYYYMMDDHH
-   a "every 30 min" is YYYYMMDDHHM30{min/30}
-   a "every 20 min" is YYYYMMDDHHM20{min/20}
-   a "every 15 min" is YYYYMMDDHHM15{min/15}
-   a "every 10 min" is YYYYMMDDHHM10{min/10}
-   a "every 5 min" is YYYYMMDDHH{M5min/5}
-   a "every min" is YYYYMMDDHHMM
+    define: a time slab is basically a string representation of resolutions on a time
+    
+    a "year" is YYYY
+    a "every half year" is YYYYM6{month/6}
+    a "every quarter" is YYYYM3{month/3}
+    a "every bimonthly" is YYYYM2{month/2}
+    a "month" is YYYYMM
+    a "day" is YYYYMMDD
+    a "hour" is YYYYMMDDHH
+    a "every 30 min" is YYYYMMDDHHM30{min/30}
+    a "every 20 min" is YYYYMMDDHHM20{min/20}
+    a "every 15 min" is YYYYMMDDHHM15{min/15}
+    a "every 10 min" is YYYYMMDDHHM10{min/10}
+    a "every 5 min" is YYYYMMDDHH{M5min/5}
+    a "every min" is YYYYMMDDHHMM
+   
    
 Get a resolution from a string where the string is defined below
 
