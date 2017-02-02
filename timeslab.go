@@ -84,7 +84,7 @@ func ResolutionFromString(res string) Resolution {
 	return Resolution_HOUR
 }
 
-// ToSlab take a resolution and time and make it the slab
+// ToSlab take a resolution and time and make it the slab the time is converted to UTC first
 //
 // MIN YYYYMMDDHHMM
 // MIN5 YYYYMMDDHHI5{min/5}
@@ -102,136 +102,139 @@ func ResolutionFromString(res string) Resolution {
 // ALL ALL
 //
 func ToSlab(res Resolution, t time.Time) string {
+	useT := t.UTC()
 	switch res {
 	case Resolution_MIN:
-		return t.Format("200601021504")
+		return useT.Format("200601021504")
 	case Resolution_MIN5:
-		m := t.Minute() / 5
-		return t.Format("2006010215") + "I5" + fmt.Sprintf("%02d", m)
+		m := useT.Minute() / 5
+		return useT.Format("2006010215") + "I5" + fmt.Sprintf("%02d", m)
 	case Resolution_MIN10:
-		m := t.Minute() / 10
-		return t.Format("2006010215") + "I10" + strconv.Itoa(m)
+		m := useT.Minute() / 10
+		return useT.Format("2006010215") + "I10" + strconv.Itoa(m)
 	case Resolution_MIN15:
-		m := t.Minute() / 15
-		return t.Format("2006010215") + "I15" + strconv.Itoa(m)
+		m := useT.Minute() / 15
+		return useT.Format("2006010215") + "I15" + strconv.Itoa(m)
 	case Resolution_MIN20:
-		m := t.Minute() / 20
-		return t.Format("2006010215") + "I20" + strconv.Itoa(m)
+		m := useT.Minute() / 20
+		return useT.Format("2006010215") + "I20" + strconv.Itoa(m)
 	case Resolution_MIN30:
-		m := t.Minute() / 30
-		return t.Format("2006010215") + "I30" + strconv.Itoa(m)
+		m := useT.Minute() / 30
+		return useT.Format("2006010215") + "I30" + strconv.Itoa(m)
 	case Resolution_HOUR:
-		return t.Format("2006010215")
+		return useT.Format("2006010215")
 	case Resolution_DAY:
-		return t.Format("20060102")
+		return useT.Format("20060102")
 	case Resolution_WEEK:
 		ynum, wnum := t.ISOWeek()
 		return fmt.Sprintf("%04d%02d", ynum, wnum)
 	case Resolution_MONTH:
-		return t.Format("200601")
+		return useT.Format("200601")
 	case Resolution_MONTH2:
-		m := (int(t.Month()) / 2)
-		return t.Format("2006") + "M2" + strconv.Itoa(m)
+		m := (int(useT.Month()) / 2)
+		return useT.Format("2006") + "M2" + strconv.Itoa(m)
 	case Resolution_MONTH3:
-		m := (int(t.Month()) / 3)
-		return t.Format("2006") + "M3" + strconv.Itoa(m)
+		m := (int(useT.Month()) / 3)
+		return useT.Format("2006") + "M3" + strconv.Itoa(m)
 	case Resolution_MONTH6:
-		m := (int(t.Month()) / 6)
-		return t.Format("2006") + "M6" + strconv.Itoa(m)
+		m := (int(useT.Month()) / 6)
+		return useT.Format("2006") + "M6" + strconv.Itoa(m)
 	case Resolution_YEAR:
-		return t.Format("2006")
+		return useT.Format("2006")
 	case Resolution_ALL:
 		return "ALL"
 	default:
-		return t.Format("2006010215")
+		return useT.Format("2006010215")
 	}
 }
 
 // ToSlabRange given a resolution and a start/end time return the list of slabs that are in the time range
 // the end slab is inclusive of the slab the end time falls in
+// both the start and end times will be converted to UTC
 func ToSlabRange(res Resolution, sTime time.Time, eTime time.Time) []string {
 	outStr := []string{}
-	onT := sTime
+	onT := sTime.UTC()
+	useEnd := eTime.UTC()
 	switch res {
 	case Resolution_MIN:
-		eTime = eTime.Add(time.Minute * 1) // need to include the end
-		for onT.Before(eTime) {
+		useEnd = useEnd.Add(time.Minute * 1) // need to include the end
+		for onT.Before(useEnd) {
 			outStr = append(outStr, onT.Format("200601021504"))
 			onT = onT.Add(time.Minute * 1)
 		}
 		return outStr
 	case Resolution_MIN5:
-		eTime = eTime.Add(time.Minute * 5) // need to include the end
-		for onT.Before(eTime) {
+		useEnd = useEnd.Add(time.Minute * 5) // need to include the end
+		for onT.Before(useEnd) {
 			m := onT.Minute() / 5
 			outStr = append(outStr, onT.Format("2006010215")+"I5"+strconv.Itoa(m))
 			onT = onT.Add(time.Minute * 5)
 		}
 		return outStr
 	case Resolution_MIN10:
-		eTime = eTime.Add(time.Minute * 10) // need to include the end
-		for onT.Before(eTime) {
+		useEnd = useEnd.Add(time.Minute * 10) // need to include the end
+		for onT.Before(useEnd) {
 			m := onT.Minute() / 10
 			outStr = append(outStr, onT.Format("2006010215")+"I10"+strconv.Itoa(m))
 			onT = onT.Add(time.Minute * 10)
 		}
 		return outStr
 	case Resolution_MIN15:
-		eTime = eTime.Add(time.Minute * 15) // need to include the end
-		for onT.Before(eTime) {
+		useEnd = useEnd.Add(time.Minute * 15) // need to include the end
+		for onT.Before(useEnd) {
 			m := onT.Minute() / 15
 			outStr = append(outStr, onT.Format("2006010215")+"I15"+strconv.Itoa(m))
 			onT = onT.Add(time.Minute * 15)
 		}
 		return outStr
 	case Resolution_MIN20:
-		eTime = eTime.Add(time.Minute * 20) // need to include the end
-		for onT.Before(eTime) {
+		useEnd = useEnd.Add(time.Minute * 20) // need to include the end
+		for onT.Before(useEnd) {
 			m := onT.Minute() / 20
 			outStr = append(outStr, onT.Format("2006010215")+"I20"+strconv.Itoa(m))
 			onT = onT.Add(time.Minute * 20)
 		}
 		return outStr
 	case Resolution_MIN30:
-		eTime = eTime.Add(time.Minute * 30) // need to include the end
-		for onT.Before(eTime) {
+		useEnd = useEnd.Add(time.Minute * 30) // need to include the end
+		for onT.Before(useEnd) {
 			m := onT.Minute() / 30
 			outStr = append(outStr, onT.Format("2006010215")+"I30"+strconv.Itoa(m))
 			onT = onT.Add(time.Minute * 30)
 		}
 		return outStr
 	case Resolution_DAY:
-		eTime = eTime.AddDate(0, 0, 1) // need to include the end
-		for onT.Before(eTime) {
+		useEnd = useEnd.AddDate(0, 0, 1) // need to include the end
+		for onT.Before(useEnd) {
 			outStr = append(outStr, onT.Format("20060102"))
 			onT = onT.AddDate(0, 0, 1)
 		}
 		return outStr
 	case Resolution_WEEK:
-		eTime = eTime.AddDate(0, 0, 7) // need to include the end
-		for onT.Before(eTime) {
+		useEnd = useEnd.AddDate(0, 0, 7) // need to include the end
+		for onT.Before(useEnd) {
 			ynum, wnum := onT.ISOWeek()
 			outStr = append(outStr, fmt.Sprintf("%04d%02d", ynum, wnum))
 			onT = onT.AddDate(0, 0, 7)
 		}
 		return outStr
 	case Resolution_MONTH:
-		eTime = eTime.AddDate(0, 1, 0) // need to include the end
-		for onT.Before(eTime) {
+		useEnd = useEnd.AddDate(0, 1, 0) // need to include the end
+		for onT.Before(useEnd) {
 			outStr = append(outStr, onT.Format("200601"))
 			onT = onT.AddDate(0, 1, 0)
 		}
 		return outStr
 	case Resolution_MONTH2:
-		eTime = eTime.AddDate(0, 2, 0) // need to include the end
-		for onT.Before(eTime) {
+		useEnd = useEnd.AddDate(0, 2, 0) // need to include the end
+		for onT.Before(useEnd) {
 			m := (int(onT.Month()) / 2)
 			outStr = append(outStr, onT.Format("2006")+"M2"+strconv.Itoa(m))
 			onT = onT.AddDate(0, 2, 0)
 		}
 		return outStr
 	case Resolution_MONTH3:
-		eTime = eTime.AddDate(0, 3, 0) // need to include the end
+		useEnd = useEnd.AddDate(0, 3, 0) // need to include the end
 		for onT.Before(eTime) {
 			m := (int(onT.Month()) / 3)
 			outStr = append(outStr, onT.Format("2006")+"M3"+strconv.Itoa(m))
@@ -239,16 +242,16 @@ func ToSlabRange(res Resolution, sTime time.Time, eTime time.Time) []string {
 		}
 		return outStr
 	case Resolution_MONTH6:
-		eTime = eTime.AddDate(0, 6, 0) // need to include the end
-		for onT.Before(eTime) {
+		useEnd = useEnd.AddDate(0, 6, 0) // need to include the end
+		for onT.Before(useEnd) {
 			m := (int(onT.Month()) / 6)
 			outStr = append(outStr, onT.Format("2006")+"M6"+strconv.Itoa(m))
 			onT = onT.AddDate(0, 6, 0)
 		}
 		return outStr
 	case Resolution_YEAR:
-		eTime = eTime.AddDate(1, 0, 0) // need to include the end
-		for onT.Before(eTime) {
+		useEnd = useEnd.AddDate(1, 0, 0) // need to include the end
+		for onT.Before(useEnd) {
 			outStr = append(outStr, onT.Format("2006"))
 			onT = onT.AddDate(1, 0, 0)
 		}
@@ -258,7 +261,7 @@ func ToSlabRange(res Resolution, sTime time.Time, eTime time.Time) []string {
 
 	//default is hourly
 	default:
-		eTime = eTime.Add(time.Hour) // need to include the end
+		useEnd = useEnd.Add(time.Hour) // need to include the end
 		for onT.Before(eTime) {
 			outStr = append(outStr, onT.Format("2006010215"))
 			onT = onT.Add(time.Hour)

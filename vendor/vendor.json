@@ -3,6 +3,12 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "kBeNcaKk56FguvPSUCEaH6AxpRc=",
+			"path": "github.com/golang/protobuf/proto",
+			"revision": "8ee79997227bf9b34611aee7946ae64735e6fd93",
+			"revisionTime": "2016-11-17T03:31:26Z"
+		},
+		{
 			"checksumSHA1": "y1SSuCpa5t8fVcmudEihy7Xwvd8=",
 			"path": "github.com/mailru/easyjson",
 			"revision": "edd3ef1dab48f1cc831d78c0602a79be7a7b1a5e",
@@ -31,7 +37,61 @@
 			"path": "github.com/mailru/easyjson/jwriter",
 			"revision": "edd3ef1dab48f1cc831d78c0602a79be7a7b1a5e",
 			"revisionTime": "2017-01-27T09:32:52Z"
+		},
+		{
+			"checksumSHA1": "mbhJnsNwGAwkTQH5c2hVRO9YmxA=",
+			"path": "github.com/philhofer/fwd",
+			"revision": "98c11a7a6ec829d672b03833c3d69a7fae1ca972",
+			"revisionTime": "2016-01-29T03:59:39Z"
+		},
+		{
+			"checksumSHA1": "vxz4kd6+ErGg2UR4nGQjovpZ/Ps=",
+			"path": "github.com/tinylib/msgp",
+			"revision": "362bfb3384d53ae4d5dd745983a4d70b6d23628c",
+			"revisionTime": "2017-01-01T02:31:10Z"
+		},
+		{
+			"checksumSHA1": "+gtojE7AuqP4x7dmbK1qSUKdZp8=",
+			"path": "github.com/tinylib/msgp/gen",
+			"revision": "362bfb3384d53ae4d5dd745983a4d70b6d23628c",
+			"revisionTime": "2017-01-01T02:31:10Z"
+		},
+		{
+			"checksumSHA1": "HN3pLd5cC+QXkX8j8FsCCB3FzSI=",
+			"path": "github.com/tinylib/msgp/msgp",
+			"revision": "362bfb3384d53ae4d5dd745983a4d70b6d23628c",
+			"revisionTime": "2017-01-01T02:31:10Z"
+		},
+		{
+			"checksumSHA1": "YOvhPfIGVBRQv48bjEjT0i7RqeE=",
+			"path": "github.com/tinylib/msgp/parse",
+			"revision": "362bfb3384d53ae4d5dd745983a4d70b6d23628c",
+			"revisionTime": "2017-01-01T02:31:10Z"
+		},
+		{
+			"checksumSHA1": "qNT+bWeQb5+AZPehlP1br40kzhA=",
+			"path": "github.com/tinylib/msgp/printer",
+			"revision": "362bfb3384d53ae4d5dd745983a4d70b6d23628c",
+			"revisionTime": "2017-01-01T02:31:10Z"
+		},
+		{
+			"checksumSHA1": "spJ1eXh+9C2lgTjm7ErpjQ8PaXw=",
+			"path": "github.com/ttacon/chalk",
+			"revision": "22c06c80ed312dcb6e1cf394f9634aa2c4676e22",
+			"revisionTime": "2016-06-26T20:24:18Z"
+		},
+		{
+			"checksumSHA1": "SoOfjYDw7R1N1P2aHxIjXYFmWUo=",
+			"path": "golang.org/x/tools/go/ast/astutil",
+			"revision": "7e08f6711b5baef141eabd919245020d7e1004a6",
+			"revisionTime": "2017-02-01T22:41:46Z"
+		},
+		{
+			"checksumSHA1": "2ko3hvt1vrfwG+p7SLW+zqDEeV4=",
+			"path": "golang.org/x/tools/imports",
+			"revision": "7e08f6711b5baef141eabd919245020d7e1004a6",
+			"revisionTime": "2017-02-01T22:41:46Z"
 		}
 	],
-	"rootPath": "wyndhblb/timeslab"
+	"rootPath": "github.com/wyndhblb/timeslab"
 }

@@ -2,6 +2,8 @@
 
 just gonna copy and paste the docs string really
 
+NOTE: all input times are converted to UTC first
+
 
     define: a time slab is basically a string representation of resolutions on a time
     
@@ -46,7 +48,7 @@ Get the slab
     
 Get a range (inclusive) of a span of time
 
-    ToSlabRange(res Resolution, statTime time.Time, endTime time.Time) []string
+    ToSlabRange(res Resolution, startTime time.Time, endTime time.Time) []string
     
  
     
