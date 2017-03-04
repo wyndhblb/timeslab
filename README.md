@@ -14,6 +14,10 @@ NOTE: all input times are converted to UTC first
     a "month" is YYYYMM
     a "day" is YYYYMMDD
     a "hour" is YYYYMMDDHH
+    a "every 2 hours" is YYYYMMDDH02{hour/2}
+    a "every 3 hours" is YYYYMMDDH03{hour/3}
+    a "every 6 hours" is YYYYMMDDH06{hour/6}
+    a "every 12 hours" is YYYYMMDD12{hour/12}
     a "every 30 min" is YYYYMMDDHHM30{min/30}
     a "every 20 min" is YYYYMMDDHHM20{min/20}
     a "every 15 min" is YYYYMMDDHHM15{min/15}
@@ -31,6 +35,10 @@ Get a resolution from a string where the string is defined below
     mi20 -> Resolution_MIN20
     mi30 -> Resolution_MIN30
     h -> Resolution_HOUR
+    h2 -> Resolution_HOUR2
+    h3 -> Resolution_HOUR3
+    h6 -> Resolution_HOUR6
+    h12 -> Resolution_HOUR12
     d -> Resolution_DAY
     m -> Resolution_MONTH
     m2 -> Resolution_MONTH2
