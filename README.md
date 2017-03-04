@@ -17,7 +17,7 @@ NOTE: all input times are converted to UTC first
     a "every 2 hours" is YYYYMMDDH02{hour/2}
     a "every 3 hours" is YYYYMMDDH03{hour/3}
     a "every 6 hours" is YYYYMMDDH06{hour/6}
-    a "every 12 hours" is YYYYMMDD12{hour/12}
+    a "every 12 hours" is YYYYMMDDH12{hour/12}
     a "every 30 min" is YYYYMMDDHHM30{min/30}
     a "every 20 min" is YYYYMMDDHHM20{min/20}
     a "every 15 min" is YYYYMMDDHHM15{min/15}
