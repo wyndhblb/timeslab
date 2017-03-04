@@ -10,6 +10,10 @@
    a "month" is YYYYMM
    a "day" is YYYYMMDD
    a "hour" is YYYYMMDDHH
+   a "every 2 hours" is YYYYMMDDH02{hour/2}
+   a "every 3 hours" is YYYYMMDDH03{hour/3}
+   a "every 6 hours" is YYYYMMDDH06{hour/6}
+   a "every 12 hours" is YYYYMMDD12{hour/12}
    a "every 30 min" is YYYYMMDDHHM30{min/30}
    a "every 20 min" is YYYYMMDDHHM20{min/20}
    a "every 15 min" is YYYYMMDDHHM15{min/15}
@@ -38,6 +42,10 @@ import (
 // mi20 -> Resolution_MIN20
 // mi30 -> Resolution_MIN30
 // h -> Resolution_HOUR
+// h2 -> Resolution_HOUR2
+// h3 -> Resolution_HOUR3
+// h6 -> Resolution_HOUR6
+// h12 -> Resolution_HOUR12
 // d -> Resolution_DAY
 // m -> Resolution_MONTH
 // m2 -> Resolution_MONTH2
@@ -64,6 +72,14 @@ func ResolutionFromString(res string) Resolution {
 		return Resolution_MIN30
 	case "h":
 		return Resolution_HOUR
+	case "h2":
+		return Resolution_HOUR2
+	case "h3":
+		return Resolution_HOUR3
+	case "h6":
+		return Resolution_HOUR6
+	case "h12":
+		return Resolution_HOUR12
 	case "d":
 		return Resolution_DAY
 	case "w":
@@ -93,6 +109,10 @@ func ResolutionFromString(res string) Resolution {
 // MIN20 YYYYMMDDHHI20{min/20}
 // MIN30 YYYYMMDDHHI30{min/30}
 // HOUR YYYYMMDDHH
+// HOUR2 YYYYMMDDH02{hour/2}
+// HOUR3 YYYYMMDDH03{hour/3}
+// HOUR6 YYYYMMDDH06{hour/6}
+// HOUR12 YYYYMMDDH12{hour/12}
 // DAY YYYYMMDD
 // MONTH YYYYMM
 // MONTH2 -> YYYYM2{month / 2}
@@ -123,6 +143,18 @@ func ToSlab(res Resolution, t time.Time) string {
 		return useT.Format("2006010215") + "I30" + strconv.Itoa(m)
 	case Resolution_HOUR:
 		return useT.Format("2006010215")
+	case Resolution_HOUR2:
+		m := useT.Hour() / 2
+		return useT.Format("20060102") + "H02" + strconv.Itoa(m)
+	case Resolution_HOUR3:
+		m := useT.Hour() / 3
+		return useT.Format("20060102") + "H03"+ strconv.Itoa(m)
+	case Resolution_HOUR6:
+		m := useT.Hour() / 6
+		return useT.Format("20060102") + "H06"+ strconv.Itoa(m)
+	case Resolution_HOUR12:
+		m := useT.Hour() / 12
+		return useT.Format("20060102") + "H12" + strconv.Itoa(m)
 	case Resolution_DAY:
 		return useT.Format("20060102")
 	case Resolution_WEEK:
@@ -201,6 +233,38 @@ func ToSlabRange(res Resolution, sTime time.Time, eTime time.Time) []string {
 			m := onT.Minute() / 30
 			outStr = append(outStr, onT.Format("2006010215")+"I30"+strconv.Itoa(m))
 			onT = onT.Add(time.Minute * 30)
+		}
+		return outStr
+	case Resolution_HOUR2:
+		useEnd = useEnd.Add(time.Hour * 2) // need to include the end
+		for onT.Before(useEnd) {
+			m := onT.Hour() / 2
+			outStr = append(outStr, onT.Format("20060102")+"H02"+strconv.Itoa(m))
+			onT = onT.Add(time.Hour * 2)
+		}
+		return outStr
+	case Resolution_HOUR3:
+		useEnd = useEnd.Add(time.Hour * 3) // need to include the end
+		for onT.Before(useEnd) {
+			m := onT.Hour() / 3
+			outStr = append(outStr, onT.Format("20060102")+"H03"+strconv.Itoa(m))
+			onT = onT.Add(time.Hour * 3)
+		}
+		return outStr
+	case Resolution_HOUR6:
+		useEnd = useEnd.Add(time.Hour * 6) // need to include the end
+		for onT.Before(useEnd) {
+			m := onT.Hour() / 6
+			outStr = append(outStr, onT.Format("20060102")+"H06"+strconv.Itoa(m))
+			onT = onT.Add(time.Hour * 6)
+		}
+		return outStr
+	case Resolution_HOUR12:
+		useEnd = useEnd.Add(time.Hour * 12) // need to include the end
+		for onT.Before(useEnd) {
+			m := onT.Hour() / 12
+			outStr = append(outStr, onT.Format("20060102")+"H12"+strconv.Itoa(m))
+			onT = onT.Add(time.Hour * 12)
 		}
 		return outStr
 	case Resolution_DAY:

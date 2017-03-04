@@ -8,7 +8,7 @@ package github.com.wyndhblb.timeslab;
 option go_package = "timeslab";
 
 
-// Resoluton min, min5, min10, min15, min20, min30 hour, day, week, month, month2, month3, month6, year, all
+// Resoluton min, min5, min10, min15, min20, min30, hour, hour2, hour3, hour6, hour12, day, week, month, month2, month3, month6, year, all
 enum Resolution {
     MIN = 0;
     MIN5 = 1;
@@ -17,12 +17,16 @@ enum Resolution {
     MIN20 = 4;
     MIN30 = 5;
     HOUR = 6;
-    DAY = 7;
-    WEEK = 8;
-    MONTH = 9;
-    MONTH2 = 10;
-    MONTH3 = 11;
-    MONTH6 = 12;
-    YEAR = 13;
-    ALL = 14;
+    HOUR2 = 7;
+    HOUR3 = 8;
+    HOUR6 = 9;
+    HOUR12 = 10;
+    DAY = 11;
+    WEEK = 12;
+    MONTH = 13;
+    MONTH2 = 14;
+    MONTH3 = 15;
+    MONTH6 = 16;
+    YEAR = 17;
+    ALL = 18;
 }
