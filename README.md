@@ -7,23 +7,23 @@ NOTE: all input times are converted to UTC first
 
     define: a time slab is basically a string representation of resolutions on a time
     
-    a "year" is YYYY
-    a "every half year" is YYYYM6{month/6}
-    a "every quarter" is YYYYM3{month/3}
-    a "every bimonthly" is YYYYM2{month/2}
-    a "month" is YYYYMM
-    a "day" is YYYYMMDD
-    a "hour" is YYYYMMDDHH
-    a "every 2 hours" is YYYYMMDDH02{hour/2}
-    a "every 3 hours" is YYYYMMDDH03{hour/3}
-    a "every 6 hours" is YYYYMMDDH06{hour/6}
-    a "every 12 hours" is YYYYMMDDH12{hour/12}
-    a "every 30 min" is YYYYMMDDHHM30{min/30}
-    a "every 20 min" is YYYYMMDDHHM20{min/20}
-    a "every 15 min" is YYYYMMDDHHM15{min/15}
-    a "every 10 min" is YYYYMMDDHHM10{min/10}
-    a "every 5 min" is YYYYMMDDHH{M5min/5}
-    a "every min" is YYYYMMDDHHMM
+    a "year" is YYYY -> 2016
+    a "every half year" is YYYYM6{month/6} -> 2016M6[0-1]
+    a "every quarter" is YYYYM3{month/3} -> 2016M3[0-3]
+    a "every bimonthly" is YYYYM2{month/2} -> 2016M2[0-6]
+    a "month" is YYYYMM -> 201601
+    a "day" is YYYYMMDD -> 20160123
+    a "hour" is YYYYMMDDHH -> 2016012317
+    a "every 2 hours" is YYYYMMDDH02{hour/2} -> 20160123H02[00-11]
+    a "every 3 hours" is YYYYMMDDH03{hour/3} -> 20160123H03[0-8]
+    a "every 6 hours" is YYYYMMDDH06{hour/6} -> 20160123H06[0-3]
+    a "every 12 hours" is YYYYMMDDH12{hour/12} -> 20160123H12[0-1]
+    a "every 30 min" is YYYYMMDDHHI30{min/30} -> 2016012317I30[0-1]
+    a "every 20 min" is YYYYMMDDHHI20{min/20} -> 2016012317I20[0-2]
+    a "every 15 min" is YYYYMMDDHHI15{min/15} -> 2016012317I15[0-3]
+    a "every 10 min" is YYYYMMDDHHI10{min/10} -> 2016012317I10[0-5]
+    a "every 5 min" is YYYYMMDDHHI5{min/5} -> 2016012317I10[00-12]
+    a "every min" is YYYYMMDDHHMM -> 201601231745
    
    
 Get a resolution from a string where the string is defined below
