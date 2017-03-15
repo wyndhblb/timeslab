@@ -22,7 +22,7 @@ NOTE: all input times are converted to UTC first
     a "every 20 min" is YYYYMMDDHHI20{min/20} -> 2016012317I20[0-2]
     a "every 15 min" is YYYYMMDDHHI15{min/15} -> 2016012317I15[0-3]
     a "every 10 min" is YYYYMMDDHHI10{min/10} -> 2016012317I10[0-5]
-    a "every 5 min" is YYYYMMDDHHI5{min/5} -> 2016012317I10[00-12]
+    a "every 5 min" is YYYYMMDDHHI5{min/5} -> 2016012317I5[00-12]
     a "every min" is YYYYMMDDHHMM -> 201601231745
    
    
